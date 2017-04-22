@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="@string/match_record_list" />
+
+    <ListView
+        android:id="@+id/matchListView"
+        android:layout_width="match_parent"
+        android:layout_height="197dp" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:weightSum="1" >
+
+        <Button
+            android:id="@+id/btnImportTeam"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:onClick="importMatchRecords"
+            android:text="@string/import_match_records" />
+
+        <Button
+            android:id="@+id/btnExportTeam"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:onClick="exportMatchRecords"
+            android:text="@string/export_match_records" />
+        
+    </LinearLayout>
+ 
+</LinearLayout>

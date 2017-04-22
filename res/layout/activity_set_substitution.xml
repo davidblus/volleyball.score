@@ -1,0 +1,218 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+       		android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="@string/substitution_team" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupSubstitution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" >
+
+            <RadioButton
+                android:id="@+id/radioA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/radioB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:baselineAligned="false"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5"
+            android:text="@string/substitution_down_num" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5"
+            android:text="@string/substitution_up_num" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/downNumber1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5"
+            android:text="" />
+        
+        <Spinner
+            android:id="@+id/upNumber1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/downNumber2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5"
+            android:text="" />
+        
+        <Spinner
+            android:id="@+id/upNumber2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/downNumber3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5"
+            android:text="" />
+        
+        <Spinner
+            android:id="@+id/upNumber3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/downNumber4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5"
+            android:text="" />
+        
+        <Spinner
+            android:id="@+id/upNumber4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/downNumber5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5"
+            android:text="" />
+        
+        <Spinner
+            android:id="@+id/upNumber5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/downNumber6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5"
+            android:text="" />
+        
+        <Spinner
+            android:id="@+id/upNumber6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+   		    android:gravity="center_horizontal"
+   		    android:layout_weight="0.5" />
+
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:onClick="substitutionDetermine"
+        android:text="@string/determine" />
+
+</LinearLayout>

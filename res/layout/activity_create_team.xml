@@ -1,0 +1,382 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:gravity="center_horizontal"
+		    android:weightSum="1" >
+		
+		    <TextView
+		        android:id="@+id/textView1"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="0.3"
+		     	android:gravity="center_horizontal"
+		        android:text="@string/team_name" />
+		
+		    <EditText
+		        android:id="@+id/teamName"
+		        android:inputType="text"
+		        android:labelFor="@+id/teamName"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="0.3"
+		        android:ems="10" >
+		        <requestFocus />
+		    </EditText>
+		    
+		</LinearLayout>
+		
+		<LinearLayout
+		    android:baselineAligned="false"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:weightSum="1" >
+		
+			<LinearLayout
+			    android:layout_width="0dp"
+			    android:layout_height="wrap_content"
+		        android:layout_weight="0.3"
+			    android:gravity="center_horizontal"
+			    android:orientation="vertical" >
+			
+			    <TextView
+			        android:id="@+id/textView2"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			     	android:gravity="center_horizontal"
+			        android:text="@string/number" />
+
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber1"
+			        android:labelFor="@+id/normalTeamMembersNumber1"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber2"
+			        android:labelFor="@+id/normalTeamMembersNumber2"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber3"
+			        android:labelFor="@+id/normalTeamMembersNumber3"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber4"
+			        android:labelFor="@+id/normalTeamMembersNumber4"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber5"
+			        android:labelFor="@+id/normalTeamMembersNumber5"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber6"
+			        android:labelFor="@+id/normalTeamMembersNumber6"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber7"
+			        android:labelFor="@+id/normalTeamMembersNumber7"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber8"
+			        android:labelFor="@+id/normalTeamMembersNumber8"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber9"
+			        android:labelFor="@+id/normalTeamMembersNumber9"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber10"
+			        android:labelFor="@+id/normalTeamMembersNumber10"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber11"
+			        android:labelFor="@+id/normalTeamMembersNumber11"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber12"
+			        android:labelFor="@+id/normalTeamMembersNumber12"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber13"
+			        android:labelFor="@+id/normalTeamMembersNumber13"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			    <EditText
+			        android:id="@+id/normalTeamMembersNumber14"
+			        android:labelFor="@+id/normalTeamMembersNumber14"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			    
+			</LinearLayout>
+			<LinearLayout
+			    android:layout_width="0dp"
+			    android:layout_height="wrap_content"
+		        android:layout_weight="0.7"
+			    android:gravity="center_horizontal"
+			    android:orientation="vertical" >
+			
+			    <TextView
+			        android:id="@+id/textView3"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			     	android:gravity="center_horizontal"
+			        android:text="@string/team_member_name" />
+
+			    <EditText
+			        android:id="@+id/normalTeamMembersName1"
+			        android:labelFor="@+id/normalTeamMembersName1"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName2"
+			        android:labelFor="@+id/normalTeamMembersName2"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName3"
+			        android:labelFor="@+id/normalTeamMembersName3"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName4"
+			        android:labelFor="@+id/normalTeamMembersName4"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName5"
+			        android:labelFor="@+id/normalTeamMembersName5"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName6"
+			        android:labelFor="@+id/normalTeamMembersName6"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName7"
+			        android:labelFor="@+id/normalTeamMembersName7"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName8"
+			        android:labelFor="@+id/normalTeamMembersName8"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName9"
+			        android:labelFor="@+id/normalTeamMembersName9"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName10"
+			        android:labelFor="@+id/normalTeamMembersName10"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName11"
+			        android:labelFor="@+id/normalTeamMembersName11"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName12"
+			        android:labelFor="@+id/normalTeamMembersName12"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName13"
+			        android:labelFor="@+id/normalTeamMembersName13"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    <EditText
+			        android:id="@+id/normalTeamMembersName14"
+			        android:labelFor="@+id/normalTeamMembersName14"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			    
+			</LinearLayout>
+		</LinearLayout>
+
+		<TextView
+		    android:id="@+id/textView4"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:gravity="center_horizontal"
+		    android:text="@string/libero_number" />
+		
+		<LinearLayout
+		    android:baselineAligned="false"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:weightSum="1" >
+		
+			<LinearLayout
+			    android:layout_width="0dp"
+			    android:layout_height="wrap_content"
+		        android:layout_weight="0.3"
+			    android:gravity="center_horizontal"
+			    android:orientation="vertical" >
+			
+			    <EditText
+			        android:id="@+id/liberoTeamMembersNumber1"
+			        android:labelFor="@+id/liberoTeamMembersNumber1"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+
+			    <EditText
+			        android:id="@+id/liberoTeamMembersNumber2"
+			        android:labelFor="@+id/liberoTeamMembersNumber2"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="number" />
+			</LinearLayout>
+			<LinearLayout
+			    android:layout_width="0dp"
+			    android:layout_height="wrap_content"
+		        android:layout_weight="0.7"
+			    android:gravity="center_horizontal"
+			    android:orientation="vertical" >
+			
+			    <EditText
+			        android:id="@+id/liberoTeamMembersName1"
+			        android:labelFor="@+id/liberoTeamMembersName1"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+
+			    <EditText
+			        android:id="@+id/liberoTeamMembersName2"
+			        android:labelFor="@+id/liberoTeamMembersName2"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:inputType="text" />
+			</LinearLayout>
+		</LinearLayout>
+		
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:gravity="center_horizontal"
+		    android:weightSum="1" >
+		
+		    <TextView
+		        android:id="@+id/textView5"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="0.3"
+		     	android:gravity="center_horizontal"
+		        android:text="@string/captain_name" />
+		
+		    <EditText
+		        android:id="@+id/captainName"
+		        android:inputType="text"
+		        android:labelFor="@+id/captainName"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="0.3"
+		        android:ems="10" >
+		    </EditText>
+		    
+		</LinearLayout>
+		
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:gravity="center_horizontal"
+		    android:weightSum="1" >
+		
+		    <TextView
+		        android:id="@+id/textView6"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="0.3"
+		     	android:gravity="center_horizontal"
+		        android:text="@string/coach_name" />
+		
+		    <EditText
+		        android:id="@+id/coachName"
+		        android:inputType="text"
+		        android:labelFor="@+id/coachName"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="0.3"
+		        android:ems="10" >
+		    </EditText>
+		    
+		</LinearLayout>
+		
+		<Button
+		    android:id="@+id/btnDetermine"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="end"
+		    android:onClick="createTeamDetermine"
+		    android:text="@string/determine" />
+	</LinearLayout>
+</ScrollView>

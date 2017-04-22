@@ -1,0 +1,380 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:weightSum="1" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+       		android:layout_gravity="center_vertical"
+            android:gravity="end"
+            android:text="@string/firstTeam" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupFirstTeam"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4" >
+
+            <RadioButton
+                android:id="@+id/radioA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/A" />
+
+            <RadioButton
+                android:id="@+id/radioB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/B" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textTeamAPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="" />
+    
+    <LinearLayout
+        android:baselineAligned="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:weightSum="1" >
+        
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum1" />
+            
+            
+            <EditText
+                android:id="@+id/TeamAPosition1"
+                android:labelFor="@+id/TeamAPosition1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+
+                <requestFocus />
+            </EditText>
+    	</LinearLayout>
+        
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum2" />
+            
+            
+            <EditText
+                android:id="@+id/TeamAPosition2"
+                android:labelFor="@+id/TeamAPosition2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>        
+    	
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum3" />
+            
+            
+            <EditText
+                android:id="@+id/TeamAPosition3"
+                android:labelFor="@+id/TeamAPosition3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>
+
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum4" />
+            
+            
+            <EditText
+                android:id="@+id/TeamAPosition4"
+                android:labelFor="@+id/TeamAPosition4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>
+
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum5" />
+            
+            
+            <EditText
+                android:id="@+id/TeamAPosition5"
+                android:labelFor="@+id/TeamAPosition5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>
+        
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum6" />
+            
+            
+            <EditText
+                android:id="@+id/TeamAPosition6"
+                android:labelFor="@+id/TeamAPosition6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>
+        
+    </LinearLayout>
+
+    
+    <TextView
+        android:id="@+id/textTeamBPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="" />
+    
+    <LinearLayout
+        android:baselineAligned="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:weightSum="1" >
+        
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum1" />
+            
+            
+            <EditText
+                android:id="@+id/TeamBPosition1"
+                android:labelFor="@+id/TeamBPosition1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>
+        
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum2" />
+            
+            
+            <EditText
+                android:id="@+id/TeamBPosition2"
+                android:labelFor="@+id/TeamBPosition2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>        
+    	
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum3" />
+            
+            
+            <EditText
+                android:id="@+id/TeamBPosition3"
+                android:labelFor="@+id/TeamBPosition3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>
+
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum4" />
+            
+            
+            <EditText
+                android:id="@+id/TeamBPosition4"
+                android:labelFor="@+id/TeamBPosition4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>
+
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum5" />
+            
+            
+            <EditText
+                android:id="@+id/TeamBPosition5"
+                android:labelFor="@+id/TeamBPosition5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>
+        
+        <LinearLayout
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="vertical"
+	        android:layout_weight="0.15" >
+
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/romanNum6" />
+            
+            
+            <EditText
+                android:id="@+id/TeamBPosition6"
+                android:labelFor="@+id/TeamBPosition6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" >
+            </EditText>
+    	</LinearLayout>
+        
+    </LinearLayout>
+        
+    <Button
+        android:id="@+id/btnDetermine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:onClick="nextStep"
+        android:text="@string/next_step" />
+
+</LinearLayout>
