@@ -1,2 +1,4 @@
 # volleyball.score
-排球比赛计分系统 Android
+排球比赛 计分系统 
+Android APP
+Eclipse 开发
