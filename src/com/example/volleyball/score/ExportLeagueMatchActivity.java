@@ -27,7 +27,7 @@ public class ExportLeagueMatchActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		// 
 		Log.d(msg, "ExportLeagueMatchActivity onCreate() event");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_export_league_match);
@@ -78,11 +78,11 @@ public class ExportLeagueMatchActivity extends Activity {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
+					// 
 				}
 			}).show();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 			return;
 		}

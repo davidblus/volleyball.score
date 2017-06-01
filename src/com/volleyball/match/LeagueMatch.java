@@ -11,6 +11,77 @@ public class LeagueMatch {
 	private List<Match> matches;//场比赛 的列表
 	private int indexOfMatch;//当前正在处理的场比赛索引，matches的索引
 
+	//获取比赛列表中最晚结束比赛的match
+	public static Match getLastMatchByEndDate(List<Match> matches) {
+		Match retMatch = matches.get(0);
+		for(Match match:matches) {
+			if(match.getMatchEndDate().after(retMatch.getMatchEndDate())) {
+				retMatch = match;
+			}
+		}
+		return retMatch;
+	}
+	//获取比赛列表中非循环制列表
+	public static List<Match> getMatchesNotRound(List<Match> matches) {
+		List<Match> matchesNotRound = new ArrayList<Match>();
+		for(Match match:matches) {
+			if(!match.getCompetitionSystem().equals("循环制")) {
+				matchesNotRound.add(match);
+			}
+		}
+		return matchesNotRound;
+	}
+	//获取比赛列表中循环制列表
+	public static List<Match> getMatchesRound(List<Match> matches) {
+		List<Match> matchesRound = new ArrayList<Match>();
+		for(Match match:matches) {
+			if(match.getCompetitionSystem().equals("循环制")) {
+				matchesRound.add(match);
+			}
+		}
+		return matchesRound;
+	}
+	//根据传入的stage阶段来过滤比赛记录
+	public static List<Match> getMatchesByStage(List<Match> matches, String stage) {
+		List<Match> matchesStage = new ArrayList<Match>();
+		for(Match match:matches) {
+			if(match.getStage().equals(stage)) {
+				matchesStage.add(match);
+			}
+		}
+		return matchesStage;
+	}
+	//根据传入的group组别来过滤队伍列表
+	public static List<Team> getTeamsByGroup(List<Team> teams, String group) {
+		List<Team> teamsGroup = new ArrayList<Team>();
+		for(Team team:teams) {
+			if(team.getGroup().equals(group)) {
+				teamsGroup.add(team);
+			}
+		}
+		return teamsGroup;
+	}
+	//根据传入的sex（男/女）来过滤队伍列表
+	public static List<Team> getTeamsBySex(List<Team> teams, String sex) {
+		List<Team> teamsSex = new ArrayList<Team>();
+		for(Team team:teams) {
+			if(team.getName().contains(sex)) {
+				teamsSex.add(team);
+			}
+		}
+		return teamsSex;
+	}
+	public Match getMatchByTwoTeamName(String teamName1, String teamName2) {
+		for(Match match:this.getMatches()) {
+			if(match.getTeamA().getName().equals(teamName1) && match.getTeamB().getName().equals(teamName2)) {
+				return match;
+			}
+			if(match.getTeamB().getName().equals(teamName1) && match.getTeamA().getName().equals(teamName2)) {
+				return match;
+			}
+		}
+		return null;
+	}
 	public List<Match> getMatchesOfTeam(Team team) {
 		//得到某个队伍的所有比赛记录
 		List<Match> matches = new ArrayList<Match>();
@@ -56,10 +127,15 @@ public class LeagueMatch {
 	}
 	public int generateUniqueTeamId() {
 		int max = 0;
-		for (Team team:this.getTeams()) {
-			if (max < team.getId()) {
-				max = team.getId();
+		try {
+			for (Team team:this.getTeams()) {
+				if (max < team.getId()) {
+					max = team.getId();
+				}
 			}
+		} catch (Exception e) {
+			// this.getTeams() == null
+			e.printStackTrace();
 		}
 		return (max + 1);
 	}
@@ -78,10 +154,16 @@ public class LeagueMatch {
 		return (max + 1);
 	}
 	public boolean isTeamNameExist(String name) {
-		for (Team team:this.getTeams()) {
-			if (name.equals(team.getName())) {
-				return true;
+		try {
+			for (Team team:this.getTeams()) {
+				if (name.equals(team.getName())) {
+					return true;
+				}
 			}
+		} catch (Exception e) {
+			// 
+			e.printStackTrace();
+			return false;
 		}
 		return false;
 	}
@@ -136,6 +218,14 @@ public class LeagueMatch {
 			}
 		}
 		return result;
+	}
+	public Team getTeamById(int id) {
+		for (Team team:this.getTeams()) {
+			if (team.getId() == id) {
+				return team;
+			}
+		}
+		return null;
 	}
 	public Team getTeamByName(String name) {
 		for (Team team:this.getTeams()) {

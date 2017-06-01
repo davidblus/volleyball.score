@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,12 +50,15 @@ public class ShowMatchResultActivity extends Activity {
 	private CheckBox captainDetermine;
 	private CheckBox judgeDetermine;
 	private CheckBox recorderDetermine;
+	private LinearLayout rankingLayout;
+	private EditText ranking_win;
+	private EditText ranking_fail;
 	
 	private boolean isJustShowResult;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// 
+		// 考虑非循环赛时，出现比赛队伍双方名次输入框！
 		Log.d(msg, "ShowMatchResultActivity onCreate() event");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_match_result);
@@ -140,6 +145,9 @@ public class ShowMatchResultActivity extends Activity {
 		this.setCaptainDetermine((CheckBox) findViewById(R.id.captainDetermine));
 		this.setJudgeDetermine((CheckBox) findViewById(R.id.judgeDetermine));
 		this.setRecorderDetermine((CheckBox) findViewById(R.id.recorderDetermine));
+		this.setRankingLayout((LinearLayout) findViewById(R.id.rankingLayout));
+		this.setRanking_win((EditText) findViewById(R.id.ranking_win));
+		this.setRanking_fail((EditText) findViewById(R.id.ranking_fail));
 
 		//如果只是显示比赛结果，则需要把确认复选框都checked
 		try {
@@ -158,7 +166,6 @@ public class ShowMatchResultActivity extends Activity {
 	}
 
 	public void determine(View view) {
-		// 
 		if(this.isJustShowResult()) {
 			// 只是用于显示比赛结果，结束这个activity
 			finish();
@@ -171,6 +178,21 @@ public class ShowMatchResultActivity extends Activity {
 		
 		// 写入文件
 		DataApplication app = (DataApplication) getApplication();
+		// 如果不是循环赛，需要获取并设置两支队伍的名次
+		LeagueMatch leagueMatch = app.getNowLeagueMatch();
+		Match match = leagueMatch.getNowMatch();
+		if(!match.getCompetitionSystem().equals("循环制")) {
+			if(match.getWinTeam().getId() == match.getTeamA().getId()) {
+				match.setRankingTeamA(Integer.parseInt(this.getRanking_win().getText().toString()));
+				match.setRankingTeamB(Integer.parseInt(this.getRanking_fail().getText().toString()));
+			}
+			else {
+				match.setRankingTeamA(Integer.parseInt(this.getRanking_fail().getText().toString()));
+				match.setRankingTeamB(Integer.parseInt(this.getRanking_win().getText().toString()));
+			}
+			leagueMatch.setNowMatch(match);
+			app.setNowLeagueMatch(leagueMatch);
+		}
 		if(!app.saveLeagueMatchToXml()) {
 			Toast.makeText(ShowMatchResultActivity.this, "无法保存本场比赛数据到sd卡！！！", Toast.LENGTH_LONG).show();
 			return;
@@ -231,9 +253,13 @@ public class ShowMatchResultActivity extends Activity {
 		this.getMatchSubstitutionB().setText("" + match.getSubstitutionTimeB());
 		if(match.getWinTeam().getId() == match.getTeamA().getId()) {
 			this.getMatchWinFailA().setText("w");
+			this.getRanking_win().setText("" + match.getRankingTeamA());
+			this.getRanking_fail().setText("" + match.getRankingTeamB());
 		}
 		else {
 			this.getMatchWinFailB().setText("w");
+			this.getRanking_win().setText("" + match.getRankingTeamB());
+			this.getRanking_fail().setText("" + match.getRankingTeamA());
 		}
 		this.getMatchGetScoreA().setText("" + match.getTotalScoreTeamA());
 		this.getMatchGetScoreB().setText("" + match.getTotalScoreTeamB());
@@ -249,6 +275,9 @@ public class ShowMatchResultActivity extends Activity {
 		this.getMatchTotalTime().setText("" + hour + "时" + minute + "分");
 		this.getWinTeam().setText(match.getWinTeam().getName());
 		this.getOverallScore().setText("3:" + match.getFailedSetTime());
+		if(match.getCompetitionSystem().equals("循环制")) {
+			this.getRankingLayout().setVisibility(View.INVISIBLE);
+		}
 		
 		if(this.isJustShowResult()) {
 			// 只是显示结果
@@ -523,6 +552,30 @@ public class ShowMatchResultActivity extends Activity {
 
 	public void setJustShowResult(boolean isJustShowResult) {
 		this.isJustShowResult = isJustShowResult;
+	}
+
+	public LinearLayout getRankingLayout() {
+		return rankingLayout;
+	}
+
+	public void setRankingLayout(LinearLayout rankingLayout) {
+		this.rankingLayout = rankingLayout;
+	}
+
+	public EditText getRanking_win() {
+		return ranking_win;
+	}
+
+	public void setRanking_win(EditText ranking_win) {
+		this.ranking_win = ranking_win;
+	}
+
+	public EditText getRanking_fail() {
+		return ranking_fail;
+	}
+
+	public void setRanking_fail(EditText ranking_fail) {
+		this.ranking_fail = ranking_fail;
 	}
 	
 }

@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -252,9 +254,25 @@ public class HomePageActivity extends Activity {
 	
 	//Method to send the broadcast
 	public void broadcastIntent(View view) {
+		LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
+		TestBroadcastReceiver testBroadcastReceiver = new TestBroadcastReceiver();
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction("com.example.volleyball.score.CUSTOM_INTENT");
+		localBroadcastManager.registerReceiver(testBroadcastReceiver, intentFilter);
+
+		System.out.println("Hit broadcastIntent!!!");
 		Intent intent = new Intent(); 
 		intent.setAction("com.example.volleyball.score.CUSTOM_INTENT"); 
-		sendBroadcast(intent);
+		boolean result = localBroadcastManager.sendBroadcast(intent);//这种方法发出的广播只能被app自身广播接收器接收
+		System.out.println("使用LocalBroadcastManager发送广播结果：" + result);
+		localBroadcastManager.unregisterReceiver(testBroadcastReceiver);
+//		sendBroadcast(intent);
+		try {
+//			startActivity(intent);
+		} catch (Exception e) {
+			// 
+			e.printStackTrace();
+		}
 	}
 	
 }

@@ -19,6 +19,7 @@ public class CreateTeamActivity extends Activity {
 	private String msg = GlobalConstant.msg;
 	
 	private EditText teamName;
+	private EditText group;
 	private List<EditText> normalTeamMembersNumbers;
 	private List<EditText> normalTeamMembersNames;
 	private List<EditText> liberoTeamMembersNumbers;
@@ -36,6 +37,7 @@ public class CreateTeamActivity extends Activity {
 		setContentView(R.layout.activity_create_team);
 		
 		this.setTeamName((EditText) findViewById(R.id.teamName));
+		this.setGroup((EditText) findViewById(R.id.group));
 		
 		List<EditText> normalTeamMembersNumbers = new ArrayList<EditText>();
 		normalTeamMembersNumbers.add((EditText) findViewById(R.id.normalTeamMembersNumber1));
@@ -84,31 +86,32 @@ public class CreateTeamActivity extends Activity {
 		this.setCaptainName((EditText) findViewById(R.id.captainName));
 		this.setCoachName((EditText) findViewById(R.id.coachName));
 		
+		String name;
 		try {
 			Bundle bundle = this.getIntent().getExtras();
-			String name = bundle.getString("name");
+			name = bundle.getString("name");
 			System.out.println("Param: name=" + name);
 			this.setModify(true);
-			
-			DataApplication app = (DataApplication) getApplication();
-			LeagueMatch leagueMatch = app.getNowLeagueMatch();
-			Team team = leagueMatch.getTeamByName(name);
-			this.getTeamName().setText(team.getName());
-			for (int i = 0; i < team.getNormalTeamMembers().size(); i++) {
-				this.getNormalTeamMembersNumbers().get(i).setText(team.getNormalTeamMembers().get(i).getNumber() + "");
-				this.getNormalTeamMembersNames().get(i).setText(team.getNormalTeamMembers().get(i).getName());
-			}
-			for (int i = 0; i < team.getLiberoTeamMembers().size(); i++) {
-				this.getLiberoTeamMembersNumbers().get(i).setText(team.getLiberoTeamMembers().get(i).getNumber() + "");
-				this.getLiberoTeamMembersNames().get(i).setText(team.getLiberoTeamMembers().get(i).getName());
-			}
-			this.getCaptainName().setText(team.getCaptainName());
-			this.getCoachName().setText(team.getCoachName());
-			
 		} catch (Exception e) {
 			System.out.println("No params!!!");
 			this.setModify(false);
+			return;
 		}
+		DataApplication app = (DataApplication) getApplication();
+		LeagueMatch leagueMatch = app.getNowLeagueMatch();
+		Team team = leagueMatch.getTeamByName(name);
+		this.getTeamName().setText(team.getName());
+		this.getGroup().setText(team.getGroup());
+		for (int i = 0; i < team.getNormalTeamMembers().size(); i++) {
+			this.getNormalTeamMembersNumbers().get(i).setText(team.getNormalTeamMembers().get(i).getNumber() + "");
+			this.getNormalTeamMembersNames().get(i).setText(team.getNormalTeamMembers().get(i).getName());
+		}
+		for (int i = 0; i < team.getLiberoTeamMembers().size(); i++) {
+			this.getLiberoTeamMembersNumbers().get(i).setText(team.getLiberoTeamMembers().get(i).getNumber() + "");
+			this.getLiberoTeamMembersNames().get(i).setText(team.getLiberoTeamMembers().get(i).getName());
+		}
+		this.getCaptainName().setText(team.getCaptainName());
+		this.getCoachName().setText(team.getCoachName());
 	}
 	
 	public void createTeamDetermine(View view) {
@@ -135,6 +138,7 @@ public class CreateTeamActivity extends Activity {
 			Toast.makeText(CreateTeamActivity.this, "请输入教练姓名！！！", Toast.LENGTH_LONG).show();
 			return;
 		}
+		String groupStr = this.getGroup().getText().toString();
 		
 		DataApplication app = (DataApplication) getApplication();
 		LeagueMatch leagueMatch = app.getNowLeagueMatch();
@@ -142,9 +146,18 @@ public class CreateTeamActivity extends Activity {
 			Toast.makeText(CreateTeamActivity.this, "该队伍名称已存在，请重新输入！！！", Toast.LENGTH_LONG).show();
 			return;
 		}
+		// 如果已经存在关于该队伍的比赛记录则不允许修改该队伍的信息
+		if (this.isModify()) {
+			if (leagueMatch.getMatchesOfTeam(leagueMatch.getNowTeam()).size() > 0) {
+				Toast.makeText(CreateTeamActivity.this, "存在该队伍比赛记录，无法修改队伍信息！！！", Toast.LENGTH_LONG).show();
+				finish();
+				return;
+			}
+		}
 		Team team = new Team();
 		team.setId(leagueMatch.generateUniqueTeamId());
 		team.setName(teamNameStr);
+		team.setGroup(groupStr);
 		team.setCaptainName(captainNameStr);
 		team.setCoachName(coachNameStr);
 		
@@ -299,6 +312,14 @@ public class CreateTeamActivity extends Activity {
 
 	public void setModify(boolean modify) {
 		this.modify = modify;
+	}
+
+	public EditText getGroup() {
+		return group;
+	}
+
+	public void setGroup(EditText group) {
+		this.group = group;
 	}
 
 }

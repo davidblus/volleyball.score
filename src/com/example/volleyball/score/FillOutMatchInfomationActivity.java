@@ -26,6 +26,7 @@ public class FillOutMatchInfomationActivity extends Activity {
 	private TextView matchName;
 	private EditText cityEditText, placeEditText, stageEditText;
 	private Spinner categoryChoose;
+	private Spinner competitionSystem;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class FillOutMatchInfomationActivity extends Activity {
 		this.setPlaceEditText((EditText) findViewById(R.id.placeEditText));
 		this.setStageEditText((EditText) findViewById(R.id.stageEditText));
 		this.setCategoryChoose((Spinner) findViewById(R.id.categoryChoose));
+		this.setCompetitionSystem((Spinner) findViewById(R.id.competitionSystem));
 		
 		DataApplication app = (DataApplication) getApplication();
 		LeagueMatch leagueMatch = app.getNowLeagueMatch();
@@ -46,6 +48,18 @@ public class FillOutMatchInfomationActivity extends Activity {
 		this.getMatchName().setText(match.getName());
 		ArrayAdapter<String> arrayAdapterCategory = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getCategoryData());
 		this.getCategoryChoose().setAdapter(arrayAdapterCategory);
+		ArrayAdapter<String> arrayAdapterCompetitionSystem = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getCompetitionSystemData());
+		this.getCompetitionSystem().setAdapter(arrayAdapterCompetitionSystem);
+	}
+
+	private List<String> getCompetitionSystemData() {
+		List<String> data = new ArrayList<String>();
+		data.add("循环制");
+		data.add("淘汰制");
+		data.add("半决赛");
+		data.add("复活赛");
+		data.add("主决赛");
+		return data;
 	}
 
 	private List<String> getCategoryData() {
@@ -89,6 +103,7 @@ public class FillOutMatchInfomationActivity extends Activity {
 			return;
 		}
 		String category = (String) this.getCategoryChoose().getSelectedItem();
+		String competitonSystem = (String) this.getCompetitionSystem().getSelectedItem();
 
 		DataApplication app = (DataApplication) getApplication();
 		LeagueMatch leagueMatch = app.getNowLeagueMatch();
@@ -99,6 +114,7 @@ public class FillOutMatchInfomationActivity extends Activity {
 		match.setSite(site);
 		match.setStage(stage);
 		match.setCategory(category);
+		match.setCompetitionSystem(competitonSystem);
 		
 		match.setMatchStartDate(new Date());
 		List<Set> sets = new ArrayList<Set>();
@@ -189,5 +205,13 @@ public class FillOutMatchInfomationActivity extends Activity {
 
 	public void setCategoryChoose(Spinner categoryChoose) {
 		this.categoryChoose = categoryChoose;
+	}
+
+	public Spinner getCompetitionSystem() {
+		return competitionSystem;
+	}
+
+	public void setCompetitionSystem(Spinner competitionSystem) {
+		this.competitionSystem = competitionSystem;
 	}
 }

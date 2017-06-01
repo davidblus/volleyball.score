@@ -64,7 +64,7 @@ public class SetInPlayActivity extends Activity {
 		this.setTeamB(match.getTeamB());
 		
 		boolean isFirstInto = true;
-		// TODO: 考虑发生暂停、换人、判罚、备注事件时的activity跳转问题
+		// TODO: 考虑发生判罚、备注事件时的activity跳转问题
 		if(isFirstInto)	{
 			//第一次进入这个activity，初始化设置。
 			this.setServerTeam(set.getFirstTeam());
@@ -223,6 +223,9 @@ public class SetInPlayActivity extends Activity {
 				match.setNowSet(set);
 				if(match.calSetWinTeam() != null) {
 					//整场比赛已结束，需计算并设置其他match中的信息
+					//	考虑计算并设置两支队伍的积分和名次，如果是循环赛积分制时则需要记录积分，如果不是循环赛则没有积分而且无法计算名次
+					// 	每场match记录一个当场比赛的两队积分，每次计算某个阶段->男/女队->小组 的名次的时候，根据系统中已有的比赛记录来重新计算
+					//	因此，对于循环赛只记录积分即可；对于非循环赛只记录名次即可，名次是在结果确认页面人工输入的，而且以后也不必重新计算名次。
 					System.out.println("整场比赛已结束！！！");
 					match.setMatchEndDate(new java.util.Date());
 					match.calSetPauseTimeA();
@@ -233,6 +236,7 @@ public class SetInPlayActivity extends Activity {
 					match.calSetTotalScoreTeamB();
 					match.calSetSetsDuration();
 					match.calSetFailedSetTime();
+					match.calSetIntegrating();
 					
 					leagueMatch.setNowMatch(match);
 					app.setNowLeagueMatch(leagueMatch);

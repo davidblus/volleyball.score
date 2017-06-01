@@ -49,7 +49,7 @@ public class DomLeagueMatchParser implements MatchParser {
 				Team team = new Team();
 				team.setNormalTeamMembers(new ArrayList<TeamMember>());
 				team.setLiberoTeamMembers(new ArrayList<TeamMember>());
-				System.out.println("should be <team>:" + itemTeam.getNodeName());
+//				System.out.println("should be <team>:" + itemTeam.getNodeName());
 				NamedNodeMap attributes = itemTeam.getAttributes();
 				team.setId(Integer.parseInt(attributes.getNamedItem("id").getNodeValue()));
 				NodeList properties = itemTeam.getChildNodes();
@@ -58,6 +58,14 @@ public class DomLeagueMatchParser implements MatchParser {
 					String nodeName = property.getNodeName();
 					if (nodeName.equals("name")) {//<name>
 						team.setName(property.getFirstChild().getNodeValue());
+					}
+					else if (nodeName.equals("group")) {//<group>
+						try {
+							team.setGroup(property.getFirstChild().getNodeValue());
+						} catch (Exception e) {
+							// 
+							team.setGroup("");
+						}
 					}
 					else if (nodeName.equals("captainName")) {//<captainName>
 						team.setCaptainName(property.getFirstChild().getNodeValue());
@@ -98,7 +106,7 @@ public class DomLeagueMatchParser implements MatchParser {
 				Point point = new Point();
 				point.addTeamAPosition(null);
 				point.addTeamBPosition(null);
-				System.out.println("should be <point>:" + itemPoint.getNodeName());
+//				System.out.println("should be <point>:" + itemPoint.getNodeName());
 				NodeList properties = itemPoint.getChildNodes();
 				for (int j = 0; j < properties.getLength(); j++) {
 					Node property = properties.item(j);
@@ -142,7 +150,7 @@ public class DomLeagueMatchParser implements MatchParser {
 			Node itemPause = pauseItems.item(i);
 			if (itemPause.getNodeName().equals("pause")) {//<pause>
 				Pause pause = new Pause();
-				System.out.println("should be <pause>:" + itemPause.getNodeName());
+//				System.out.println("should be <pause>:" + itemPause.getNodeName());
 				NodeList properties = itemPause.getChildNodes();
 				for (int j = 0; j < properties.getLength(); j++) {
 					Node property = properties.item(j);
@@ -177,7 +185,7 @@ public class DomLeagueMatchParser implements MatchParser {
 			Node itemSubstitution = substitutionItems.item(i);
 			if (itemSubstitution.getNodeName().equals("substitution")) {//<substitution>
 				Substitution substitution = new Substitution();
-				System.out.println("should be <substitution>:" + itemSubstitution.getNodeName());
+//				System.out.println("should be <substitution>:" + itemSubstitution.getNodeName());
 				NodeList properties = itemSubstitution.getChildNodes();
 				for (int j = 0; j < properties.getLength(); j++) {
 					Node property = properties.item(j);
@@ -221,7 +229,7 @@ public class DomLeagueMatchParser implements MatchParser {
 				Set set = new Set();
 				set.addTeamAInitialPosition(null);
 				set.addTeamBInitialPosition(null);
-				System.out.println("should be <set>:" + itemSet.getNodeName());
+//				System.out.println("should be <set>:" + itemSet.getNodeName());
 				NamedNodeMap attributes = itemSet.getAttributes();
 				set.setNum(Integer.parseInt(attributes.getNamedItem("num").getNodeValue()));
 				NodeList properties = itemSet.getChildNodes();
@@ -310,7 +318,7 @@ public class DomLeagueMatchParser implements MatchParser {
 			Node itemMatch = matchItems.item(i);
 			if (itemMatch.getNodeName().equals("match")) {//<match>
 				Match match = new Match();
-				System.out.println("should be <match>:" + itemMatch.getNodeName());
+//				System.out.println("should be <match>:" + itemMatch.getNodeName());
 				NamedNodeMap attributes = itemMatch.getAttributes();
 				match.setId(Integer.parseInt(attributes.getNamedItem("id").getNodeValue()));
 				NodeList properties = itemMatch.getChildNodes();
@@ -340,6 +348,15 @@ public class DomLeagueMatchParser implements MatchParser {
 					}
 					else if (nodeName.equals("category")) {//<category>
 						match.setCategory(property.getFirstChild().getNodeValue());
+					}
+					else if (nodeName.equals("competitionSystem")) {//<competitionSystem>
+						try {
+							match.setCompetitionSystem(property.getFirstChild().getNodeValue());
+						} catch (DOMException e) {
+							// 
+							match.setCompetitionSystem(null);
+							e.printStackTrace();
+						}
 					}
 					else if (nodeName.equals("matchStartDate")) {//<matchStartDate>
 						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
@@ -396,6 +413,18 @@ public class DomLeagueMatchParser implements MatchParser {
 					else if (nodeName.equals("failedSetTime")) {//<failedSetTime>
 						match.setFailedSetTime(Integer.parseInt(property.getFirstChild().getNodeValue()));
 					}
+					else if (nodeName.equals("integratingTeamA")) {//<integratingTeamA>
+						match.setIntegratingTeamA(Integer.parseInt(property.getFirstChild().getNodeValue()));
+					}
+					else if (nodeName.equals("integratingTeamB")) {//<integratingTeamB>
+						match.setIntegratingTeamB(Integer.parseInt(property.getFirstChild().getNodeValue()));
+					}
+					else if (nodeName.equals("rankingTeamA")) {//<rankingTeamA>
+						match.setRankingTeamA(Integer.parseInt(property.getFirstChild().getNodeValue()));
+					}
+					else if (nodeName.equals("rankingTeamB")) {//<rankingTeamB>
+						match.setRankingTeamB(Integer.parseInt(property.getFirstChild().getNodeValue()));
+					}
 				}
 				matches.add(match);
 			}
@@ -450,7 +479,10 @@ public class DomLeagueMatchParser implements MatchParser {
 				
 				Element teamNameElement = doc.createElement("name");
 				teamNameElement.setTextContent(team.getName());
-				teamElement.appendChild(teamNameElement);
+				teamElement.appendChild(teamNameElement);				
+				Element groupElement = doc.createElement("group");
+				groupElement.setTextContent(team.getGroup());
+				teamElement.appendChild(groupElement);
 				Element captainNameElement = doc.createElement("captainName");
 				captainNameElement.setTextContent(team.getCaptainName());
 				teamElement.appendChild(captainNameElement);
@@ -707,6 +739,9 @@ public class DomLeagueMatchParser implements MatchParser {
 				Element categoryElement = doc.createElement("category");
 				categoryElement.setTextContent(match.getCategory());
 				matchElement.appendChild(categoryElement);
+				Element competitionSystemElement = doc.createElement("competitionSystem");
+				competitionSystemElement.setTextContent(match.getCompetitionSystem());
+				matchElement.appendChild(competitionSystemElement);
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
 				Element matchStartDateElement = doc.createElement("matchStartDate");
@@ -746,6 +781,18 @@ public class DomLeagueMatchParser implements MatchParser {
 				Element failedSetTimeElement = doc.createElement("failedSetTime");
 				failedSetTimeElement.setTextContent("" + match.getFailedSetTime());
 				matchElement.appendChild(failedSetTimeElement);
+				Element integratingTeamAElement = doc.createElement("integratingTeamA");
+				integratingTeamAElement.setTextContent("" + match.getIntegratingTeamA());
+				matchElement.appendChild(integratingTeamAElement);
+				Element integratingTeamBElement = doc.createElement("integratingTeamB");
+				integratingTeamBElement.setTextContent("" + match.getIntegratingTeamB());
+				matchElement.appendChild(integratingTeamBElement);
+				Element rankingTeamAElement = doc.createElement("rankingTeamA");
+				rankingTeamAElement.setTextContent("" + match.getRankingTeamA());
+				matchElement.appendChild(rankingTeamAElement);
+				Element rankingTeamBElement = doc.createElement("rankingTeamB");
+				rankingTeamBElement.setTextContent("" + match.getRankingTeamB());
+				matchElement.appendChild(rankingTeamBElement);
 				
 				matchesElement.appendChild(matchElement);
 			}

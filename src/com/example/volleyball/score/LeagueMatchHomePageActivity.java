@@ -199,6 +199,11 @@ public class LeagueMatchHomePageActivity extends Activity {
 
 		DataApplication app = (DataApplication) getApplication();
 		LeagueMatch leagueMatch = app.getNowLeagueMatch();
+		// 检查两支队伍是否属于同一组group，如果组别不同则不能比赛！！！
+		if(!leagueMatch.getTeamByName(nameTeamA).getGroup().equals(leagueMatch.getTeamByName(nameTeamB).getGroup())) {
+			Toast.makeText(LeagueMatchHomePageActivity.this, "A队B队组别不同，无法比赛！！！", Toast.LENGTH_LONG).show();
+			return;
+		}
 		
 		Match match = new Match();
 		
@@ -228,6 +233,12 @@ public class LeagueMatchHomePageActivity extends Activity {
 		// 跳转到比赛记录activity
 		System.out.println("Hit showMatchList");
 		Intent i = new Intent(LeagueMatchHomePageActivity.this, MatchListActivity.class);
+		startActivity(i);
+	}
+	public void showTeamRank(View view) {
+		// 点击队伍排名按钮，跳转到队伍排名activity
+		System.out.println("Hit showTeamRank");
+		Intent i = new Intent(LeagueMatchHomePageActivity.this, TeamRankActivity.class);
 		startActivity(i);
 	}
 	/** 当此activity启动方式为singleTask时，用于更新intent。*/

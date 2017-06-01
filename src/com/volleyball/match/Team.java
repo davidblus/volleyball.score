@@ -5,13 +5,14 @@ import java.util.List;
 public class Team {
 	private int id;
 	private String name;
+	private String group;						//×é±ð
 	private List<TeamMember> normalTeamMembers;
 	private List<TeamMember> liberoTeamMembers;
 	private String captainName;
 	private String coachName;
 
 	public Team() {
-		// TODO Auto-generated constructor stub
+		// 
 		this.setId(-1);
 		this.setName("");
 		this.setNormalTeamMembers(null);
@@ -128,6 +129,12 @@ public class Team {
 				"\nnormalTeamMembers = " + this.normalTeamMembers.toString() + 
 				"\nliberoTeamMembers = " + this.liberoTeamMembers.toString() +
 				"\ncaptainName = " + this.captainName + "\ncoachName = " + this.coachName + "\n";
+	}
+	public String getGroup() {
+		return group;
+	}
+	public void setGroup(String group) {
+		this.group = group;
 	}
 
 }

@@ -14,7 +14,7 @@ public class Point {
 	private int clientScore;//这一分判定结束后原接球队伍总分数
 
 	public Point() {
-		// TODO Auto-generated constructor stub
+		// 
 	}
 	
 	public void addTeamAPosition(TeamMember teamMember) {

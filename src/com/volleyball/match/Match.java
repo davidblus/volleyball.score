@@ -13,6 +13,7 @@ public class Match {
 	private String site;//场地
 	private String stage;//阶段
 	private String category;//类别（成年、青年、少年）
+	private String competitionSystem;//赛制（循环制、淘汰制、半决赛、复活赛、主决赛）
 	private Date matchStartDate;//比赛开始日期和时间
 	private Date matchEndDate;//比赛结束日期和时间
 	
@@ -28,6 +29,10 @@ public class Match {
 	private int setsDuration;//比赛总时长=sum(每一局比赛时长)，单位（分钟）
 	private int failedSetTime;//获胜队伍输了几局
 
+	private int integratingTeamA;//A队积分（循环赛制）
+	private int integratingTeamB;//B队积分（循环赛制）
+	private int rankingTeamA;//A队名次（非循环赛制）
+	private int rankingTeamB;//B队名次（非循环赛制）
 	public Match() {
 		// 
 	}
@@ -141,6 +146,32 @@ public class Match {
 			this.setWinTeam(this.getTeamB());
 		}
 		return this.getWinTeam();
+	}
+	public void calSetIntegrating() {
+		//当此场比赛是循环制时，计算并设置队伍双方的积分，3：0或者3：1赢了记3分、输了记0分，3：2赢了记2分、输了记1分
+		//调用此函数之前应先设置此场比赛的获胜队伍，也就是winTeam，否则程序异常！
+		if(this.getCompetitionSystem().equals("循环制")) {
+			if(this.getWinTeam().getId() == this.getTeamA().getId()) {
+				if(this.getFailedSetTime() == 2) {//3:2
+					this.setIntegratingTeamA(2);//A队胜利，获得2积分
+					this.setIntegratingTeamB(1);//B队失败，获得1积分
+				}
+				else {//3:0或者3:1
+					this.setIntegratingTeamA(3);
+					this.setIntegratingTeamB(0);
+				}
+			}
+			else {
+				if(this.getFailedSetTime() == 2) {//3:2
+					this.setIntegratingTeamA(1);//A队失败，获得1积分
+					this.setIntegratingTeamB(2);//B队胜利，获得2积分
+				}
+				else {//3:0或者3:1
+					this.setIntegratingTeamA(0);
+					this.setIntegratingTeamB(3);
+				}
+			}
+		}
 	}
 	public boolean addSet(Set set) {
 		List<Set> sets = this.getSets();
@@ -339,6 +370,36 @@ public class Match {
 
 	public void setSetNumber(int setNumber) {
 		this.setNumber = setNumber;
+	}
+	public String getCompetitionSystem() {
+		return competitionSystem;
+	}
+	public void setCompetitionSystem(String competitionSystem) {
+		this.competitionSystem = competitionSystem;
+	}
+	public int getIntegratingTeamA() {
+		return integratingTeamA;
+	}
+	public void setIntegratingTeamA(int integratingTeamA) {
+		this.integratingTeamA = integratingTeamA;
+	}
+	public int getIntegratingTeamB() {
+		return integratingTeamB;
+	}
+	public void setIntegratingTeamB(int integratingTeamB) {
+		this.integratingTeamB = integratingTeamB;
+	}
+	public int getRankingTeamA() {
+		return rankingTeamA;
+	}
+	public void setRankingTeamA(int rankingTeamA) {
+		this.rankingTeamA = rankingTeamA;
+	}
+	public int getRankingTeamB() {
+		return rankingTeamB;
+	}
+	public void setRankingTeamB(int rankingTeamB) {
+		this.rankingTeamB = rankingTeamB;
 	}
 
 }

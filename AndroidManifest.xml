@@ -3,6 +3,7 @@
 <!DOCTYPE RelativeLayout>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.volleyball.score"
+    xmlns:tools="http://schemas.android.com/tools"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -12,6 +13,7 @@
 
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="com.example.sendbroadcast.permission.TEST"/>
 	
     <application
         android:name="com.example.volleyball.score.DataApplication"
@@ -50,6 +52,15 @@
             android:name="com.example.volleyball.score.MatchListActivity"
             android:launchMode="singleTask"></activity>
         <activity android:name="com.example.volleyball.score.ExportMatchActivity"></activity>
+        <activity android:name="com.example.volleyball.score.TeamRankActivity"></activity>
+        <activity android:name="com.example.volleyball.score.TeamStageRankActivity"></activity>
+        <activity android:name="com.example.volleyball.score.TestActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.volleyball.score.CUSTOM_INTENT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         
         <service android:name="com.example.volleyball.score.TestService"></service>
         
@@ -61,6 +72,17 @@
                 </action> 
             </intent-filter>
         </receiver>
+        
+        <!-- 
+        <receiver tools:ignore="ExportedReceiver"
+            android:name="com.example.volleyball.score.TestBroadcastReceiver">
+            <intent-filter> 
+                <action android:name="com.example.volleyball.score.CUSTOM_INTENT"> 
+                </action> 
+            </intent-filter>
+        </receiver>
+         -->
+        
     </application>
 	
 </manifest>

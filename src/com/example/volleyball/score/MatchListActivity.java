@@ -118,7 +118,6 @@ public class MatchListActivity extends Activity {
 			}
 		}
 		return data;
-		
 	}
 
 	public void updateData() {

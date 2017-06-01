@@ -24,7 +24,7 @@ public class DataApplication extends Application {
 	private DomLeagueMatchParser parser;// xml文档解析器
 
 	public DataApplication() {
-		// TODO Auto-generated constructor stub
+		// 
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class DataApplication extends Application {
 		this.setXmlPath(absoluteFileName);
 		this.setParser(new DomLeagueMatchParser());
 
-		// TODO(davidblus): 打开程序时，载入并解析xml文件。
+		// (davidblus): 打开程序时，载入并解析xml文件。
 		if (!loadAnalysisXml()) {
 			System.out.println("load analysis xml failed!!!");
 		}
@@ -58,11 +58,11 @@ public class DataApplication extends Application {
 				System.out.println("leagueMatch:" + leagueMatch.toString());
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 			return false;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 			return false;
 		}
@@ -75,11 +75,11 @@ public class DataApplication extends Application {
 			fos.write(xmlContext.getBytes("UTF-8"));
 			fos.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 			return false;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 			return false;
 		}
