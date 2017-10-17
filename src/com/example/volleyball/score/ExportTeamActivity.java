@@ -43,8 +43,13 @@ public class ExportTeamActivity extends Activity {
 		final DataApplication app = (DataApplication) getApplication();
 		LeagueMatch leagueMatch = app.getNowLeagueMatch();
 		List<String> data = new ArrayList<String>();
-		for (Team team:leagueMatch.getTeams()) {
-			data.add(team.getName());
+		try {
+			for (Team team:leagueMatch.getTeams()) {
+				data.add(team.getName());
+			}
+		} catch (Exception e) {
+			// 
+			e.printStackTrace();
 		}
 		return data;
 	}

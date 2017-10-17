@@ -7,11 +7,13 @@
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content" 
         android:text="@string/start_service" 
+        android:visibility="invisible"
         android:onClick="startService"/> 
     <Button android:id="@+id/btnStopService" 
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content" 
         android:text="@string/stop_service" 
+        android:visibility="invisible"
         android:onClick="stopService" />
 
     <Button
@@ -19,6 +21,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/send_broadcast"
+        android:visibility="invisible"
         android:onClick="broadcastIntent" />
 
     <TextView

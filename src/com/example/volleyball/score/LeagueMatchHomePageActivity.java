@@ -191,8 +191,14 @@ public class LeagueMatchHomePageActivity extends Activity {
 		// 点击 开始比赛 按钮
 		String nameTeamA = (String) this.getSpinnerChooseA().getSelectedItem();
 		String nameTeamB = (String) this.getSpinnerChooseB().getSelectedItem();
-		if(nameTeamA.equals(nameTeamB)) {
-			Toast.makeText(LeagueMatchHomePageActivity.this, "A队B队不能是一支队伍！！！", Toast.LENGTH_LONG).show();
+		try {
+			if(nameTeamA.equals(nameTeamB)) {
+				Toast.makeText(LeagueMatchHomePageActivity.this, "A队B队不能是一支队伍！！！", Toast.LENGTH_LONG).show();
+				return;
+			}
+		} catch (Exception e) {
+			// 
+			e.printStackTrace();
 			return;
 		}
 		System.out.println("nameTeamA:" + nameTeamA + " nameTeamB:" + nameTeamB);
